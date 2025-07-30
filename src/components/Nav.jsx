@@ -1,15 +1,20 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Nav = () => {
     const [theme, setTheme] = useState('light');
-    
-    const toggleTheme = () => {
-        // Toggle between light and synthwave themes
-        const newTheme = theme === 'light' ? 'synthwave' : 'light';
-        // Update the state with the new theme
-        setTheme(newTheme);
-        // Set the data-theme attribute on the document element
+
+    useEffect(()=>{
+        localStorage.setItem('theme', theme);
+        const newTheme = localStorage.getItem('theme');
         document.documentElement.setAttribute('data-theme', newTheme);
+    },[theme]);
+
+    const toggleTheme = e => {
+        if(e.target.checked) {
+            setTheme('synthwave');
+        } else {
+            setTheme('light');
+        }
     };
     return (
         <div className="navbar bg-base-100 shadow-lg px-4 fixed top-0 z-50">
