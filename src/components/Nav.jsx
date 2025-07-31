@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Nav = () => {
     const [theme, setTheme] = useState('light');
@@ -24,9 +24,11 @@ const Nav = () => {
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-4">
-                    <Link to='/' className="font-bold px-4">Home</Link>
-                    <Link to='/blogs' className="font-bold text-primary px-4">Blogs</Link>
-                    <Link to='/bookmarks' className="font-bold px-4">Bookmarks</Link>
+                    <NavLink to='/' className={({ isActive })=> isActive ? "text-primary font-bold px-4 underline transition-all duration-1000 ease-in-out" : "font-bold px-4"}>Home</NavLink>
+                    
+                    <NavLink to='/blogs' className={({ isActive })=> isActive ? "text-primary font-bold px-4 underline transition-all duration-1000 ease-in-out" : "font-bold px-4"}>Blogs</NavLink>
+
+                    <NavLink to='/bookmarks' className={({ isActive })=> isActive ? "text-primary font-bold px-4 underline transition-all duration-1000 ease-in-out" : "font-bold px-4"}>Bookmarks</NavLink>
                 </ul>
                 <label className="toggle text-base-content">
                     <input onChange={toggleTheme} type="checkbox" value="synthwave" className="theme-controller" />
