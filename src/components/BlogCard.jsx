@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import placeholderImage from '../assets/404.jpg';
 
-const BlogDetails = ({blog}) => {
+const BlogCard = ({blog}) => {
     const { id, title, description, cover_image, published_at } = blog;
     return (
         <Link rel="noopener noreferrer" to={`/blog/${id}`} className="max-w-sm mx-auto group hover:no-underline focus:no-underline bg-light-900 border border-primary p-2 rounded-xl hover:shadow-xl transition hover:scale-105">
@@ -15,4 +15,4 @@ const BlogDetails = ({blog}) => {
     );
 };
 
-export default BlogDetails;
+export default BlogCard;
