@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const Nav = () => {
     const [theme, setTheme] = useState('light');
@@ -19,13 +20,13 @@ const Nav = () => {
     return (
         <div className="navbar bg-base-100 shadow-lg px-4 fixed top-0 z-50">
             <div className="flex-1">
-                <a className="btn btn-ghost gap-0 text-secondary normal-case text-2xl text-2xl font-bold">Beta<span className="text-primary">Blog</span></a>
+                <Link to='/' className="btn btn-ghost gap-0 text-secondary normal-case text-2xl text-2xl font-bold">Beta<span className="text-primary">Blog</span></Link>
             </div>
             <div className="flex-none">
-                <ul className="menu menu-horizontal px-1">
-                    <li className="font-bold"><a>Home</a></li>
-                    <li className="font-bold text-primary"><a>Blogs</a></li>
-                    <li className="font-bold"><a>Bookmarks</a></li>
+                <ul className="menu menu-horizontal px-4">
+                    <Link to='/' className="font-bold px-4">Home</Link>
+                    <Link to='/blogs' className="font-bold text-primary px-4">Blogs</Link>
+                    <Link to='/bookmarks' className="font-bold px-4">Bookmarks</Link>
                 </ul>
                 <label className="toggle text-base-content">
                     <input onChange={toggleTheme} type="checkbox" value="synthwave" className="theme-controller" />
