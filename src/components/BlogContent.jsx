@@ -5,7 +5,7 @@ import placeholderImage from '../assets/404.jpg';
 
 const BlogContent = () => {
     const blog = useLoaderData();
-    const { title, cover_image, tags, body_html } = blog;
+    const { title, cover_image, tags, body_markdown } = blog;
     return (
         <div className="mx-auto group focus:no-underline bg-light-900 border border-gray-200 border-b-0 p-2">
             <img role="presentation" className="object-cover w-full rounded h-44 bg-light-500" src={cover_image || placeholderImage} />
@@ -18,7 +18,7 @@ const BlogContent = () => {
             </div>
             <div className="space-y-2">
                 <h3 className="text-2xl font-semibold group-hover:underline group-focus:underline">{title}</h3>
-                <Markdown rehypePlugins={rehypeRaw}>{body_html}</Markdown>
+                <Markdown rehypePlugins={rehypeRaw}>{body_markdown}</Markdown>
             </div>
         </div>
     );
