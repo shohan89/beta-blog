@@ -1,4 +1,6 @@
 import { createBrowserRouter } from "react-router";
+import Author from "../components/Author";
+import BlogContent from "../components/BlogContent";
 import MainLayout from "../layouts/MainLayout";
 import BlogDetails from "../pages/BlogDetails";
 import Blogs from "../pages/Blogs";
@@ -22,7 +24,17 @@ const router = createBrowserRouter([
       {
         path: '/blog/:blogId',
         element: <BlogDetails />,
-        loader: ({ params }) => fetch(`https://dev.to/api/articles/${params.blogId}`)
+        loader: ({ params }) => fetch(`https://dev.to/api/articles/${params.blogId}`),
+        children: [
+            {
+                index: true,
+                element: <BlogContent />
+            },
+            {
+                path: 'author',
+                element: <Author />
+            }
+        ]
       },
       {
         path: '/bookmarks',
