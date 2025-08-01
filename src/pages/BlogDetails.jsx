@@ -4,7 +4,7 @@ import { Link, Outlet, useLoaderData } from "react-router";
 const BlogDetails = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const blog = useLoaderData();
-    const { title, comments_count, public_reactions_count, reading_time_minutes, published_at, tags } = blog;
+    const { title, comments_count, public_reactions_count, reading_time_minutes, published_at } = blog;
     return (
         <div className="max-w-3xl px-6 py-16 mx-auto space-y-12">
             <article className="space-y-8">
@@ -40,13 +40,7 @@ const BlogDetails = () => {
                 </div>
                 <Outlet />
             </article>
-            <div>
-                <div className="flex flex-wrap py-6 gap-2 border-t border-dashed border-gray-400 dark:border-gray-600">
-                    {
-                        tags.map(tag => <a key={tag} rel="noopener noreferrer" href="#" className="px-3 py-1 rounded-sm hover:underline bg-violet-400 dark:bg-violet-600 text-gray-900 dark:text-gray-50">#{tag}</a>)
-                    }
-                </div>
-            </div>
+            
         </div>
     );
 };
