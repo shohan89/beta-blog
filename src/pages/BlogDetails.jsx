@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { MdBookmarkAdd } from "react-icons/md";
 import { Link, Outlet, useLoaderData } from "react-router";
 
 const BlogDetails = () => {
@@ -35,6 +36,10 @@ const BlogDetails = () => {
                             </svg>
                             <span>Author</span>
                         </Link>
+                        {/* Bookmark btn */}
+                        <div className="bg-primary p-3 ml-5 rounded-full bg-opacity-20 hover:bg-opacity-30 cursor-pointer hover:scale-105 overflow-hidden shadow-2xl">
+                            <MdBookmarkAdd size={20} className="text-white" />
+                        </div>
                     </div>
                     {/* Tabs */}
                 </div>
