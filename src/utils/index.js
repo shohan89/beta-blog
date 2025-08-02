@@ -2,7 +2,7 @@ import toast from "react-hot-toast";
 
 const getBlogsFromLS = () => {
     let blogs = [];
-    const storedBlogs = localStorage('blogs');
+    const storedBlogs = localStorage.getItem('blogs');
     if(storedBlogs){
         blogs = JSON.parse(storedBlogs);
     }
@@ -16,11 +16,11 @@ const saveBlog = blog => {
     if(isExist){
         return toast.error('Already added to bookmark!')
     }
-    else{
-        blogs.push(blog);
-        localStorage.setItem('blogs', JSON.stringify(blogs));
-        toast.success('Successfully added to bookmark!')
-    }
+    
+    blogs.push(blog);
+    localStorage.setItem('blogs', JSON.stringify(blogs));
+    toast.success('Successfully added to bookmark!')
+    
 }
 
 // delete
@@ -31,8 +31,8 @@ const deleteBlog = blogId => {
     toast.success('Blog removed from bookmark!');
 }
 
-export default {
-    getBlogsFromLS,
-    saveBlog,
-    deleteBlog
-}
+export {
+    deleteBlog, getBlogsFromLS,
+    saveBlog
+};
+
