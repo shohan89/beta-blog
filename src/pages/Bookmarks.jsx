@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BlogCard from "../components/BlogCard";
-import { getBlogsFromLS } from "../utils";
+import { deleteBlog, getBlogsFromLS } from "../utils";
 
 const Bookmarks = () => {
     const [blogs, setBlogs] = useState([]);
@@ -10,10 +10,21 @@ const Bookmarks = () => {
         setBlogs(storedBlogs);
     },[])
 
+    const handleDelete = BlogId => {
+        deleteBlog(BlogId);
+        const storedBlogs = getBlogsFromLS();
+        setBlogs(storedBlogs);
+    }
+
     return (
-        <div className="grid py-12 px-4 justify-center grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid py-18 justify-center grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {
-                blogs.map(blog => <BlogCard key={blog.id} blog={blog} />)
+                blogs.map(blog => <BlogCard 
+                    deletable={true} 
+                    key={blog.id} 
+                    blog={blog}
+                    handleDelete={handleDelete}
+                     />)
             }
         </div>
     );

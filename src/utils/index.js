@@ -26,7 +26,7 @@ const saveBlog = blog => {
 // delete
 const deleteBlog = blogId => {
     let blogs = getBlogsFromLS();
-    const remaining = blogs.filter(b => b.id === blogId);
+    const remaining = blogs.filter(b => b.id !== blogId);
     localStorage.setItem('blogs', JSON.stringify(remaining));
     toast.success('Blog removed from bookmark!');
 }

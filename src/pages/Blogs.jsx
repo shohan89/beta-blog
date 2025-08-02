@@ -4,7 +4,6 @@ import Loader from "../components/Loader";
 
 const Blogs = () => {
     const blogs = useLoaderData();
-    console.log("🚀 ~ Blogs ~ blogs:", blogs)
     const navigation = useNavigation();
     if( navigation.state === 'loading' ) return <Loader />
     return (
